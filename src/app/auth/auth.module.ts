@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './ components/register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './store/reducer';
+import { AuthService } from './services/auth.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -12,8 +16,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    StoreModule.forFeature('auth', reducer),
+  ],
   declarations: [RegisterComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), ReactiveFormsModule],
   exports: [RegisterComponent],
+  providers: [AuthService],
 })
 export class AuthModule {}
