@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 import { isSubmittingSelector } from '../../store/selector';
 import { AuthService } from '../../services/auth.service';
 import { CurrentUserInterface } from '../../../shared/currentUser.interface';
+import { RegisterRequestInterface } from '../../types/registerRequest.interface';
 
 @Component({
   selector: 'app-register',
@@ -42,12 +43,15 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(): void {
     console.log('submit', this.form.value, this.form.valid);
-    this.store.dispatch(registerAction(this.form.value));
-    this.authService
-      .register(this.form.value)
-      .subscribe((currentUser: CurrentUserInterface) =>
-        console.log('currentUser:', currentUser)
-      );
+    const request: RegisterRequestInterface = {
+      user: this.form.value,
+    };
+    this.store.dispatch(registerAction({ request }));
+    // this.authService
+    //   .register(this.form.value)
+    //   .subscribe((currentUser: CurrentUserInterface) =>
+    //     console.log('currentUser:', currentUser)
+    //   );
   }
 
   private initializeValue() {
