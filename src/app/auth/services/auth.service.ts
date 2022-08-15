@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class AuthService {
   constructor(private http: HttpClient) {}
   register(data: RegisterRequestInterface): Observable<CurrentUserInterface> {
-    const url = environment.apiUrl + '/user';
+    const url = environment.apiUrl + '/users';
 
     return this.http
       .post<AuthResponseInterface>(url, data)
