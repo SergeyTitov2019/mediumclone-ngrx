@@ -9,7 +9,8 @@ import { BackendErrorsInterface } from '../../../types/backendErrors.interface';
 export class BackendErrorMessageComponent implements OnInit {
   @Input('backendErrors') backendErrorsProps: BackendErrorsInterface;
 
-  errorMessages: any;
+  errorMessages: string[];
+
   ngOnInit(): void {
     this.errorMessages = Object.keys(this.backendErrorsProps).map(
       (name: string) => {
@@ -19,3 +20,9 @@ export class BackendErrorMessageComponent implements OnInit {
     );
   }
 }
+
+/****
+ *
+ *  Object.keys вернет нам массив строк ключей
+ *
+ * ****/

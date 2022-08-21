@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { RegisterEffect } from './store/effects/register.effect';
 import { BackendErrorMessageModule } from '../shared/modules/backendErrorMessages/backendErrorMessage.module';
+import { PersistanceService } from '../shared/services/persistance.service';
+import { LoginEffect } from './store/effects/login.effect';
 
 const routes: Routes = [
   {
@@ -25,11 +27,11 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     StoreModule.forFeature('auth', reducer),
-    EffectsModule.forFeature([RegisterEffect]),
+    EffectsModule.forFeature([RegisterEffect, LoginEffect]),
     BackendErrorMessageModule,
   ],
   declarations: [RegisterComponent],
   exports: [RegisterComponent],
-  providers: [AuthService],
+  providers: [AuthService, PersistanceService],
 })
 export class AuthModule {}
