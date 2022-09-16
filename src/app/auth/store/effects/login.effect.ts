@@ -25,6 +25,7 @@ export class LoginEffect {
             this.persistenceService.set('accessToken', currentUser.token);
             return loginSuccessAction({ currentUser });
           }),
+
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
               loginFailureAction({ errors: errorResponse.error.errors })
