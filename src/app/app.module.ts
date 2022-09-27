@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TopBarModule } from './shared/modules/top-bar/top-bar.module';
 import { PersistanceService } from './shared/services/persistance.service';
 import { AuthInterceptorService } from './shared/services/authinterceptor.service';
+import { GlobalFeedModule } from './global-feed/global-feed.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { AuthInterceptorService } from './shared/services/authinterceptor.servic
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     TopBarModule,
+    GlobalFeedModule,
   ],
   providers: [
     PersistanceService,
