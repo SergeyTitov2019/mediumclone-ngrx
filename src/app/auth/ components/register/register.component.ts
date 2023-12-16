@@ -22,6 +22,7 @@ import { BackendErrorsInterface } from '../../../shared/types/backendErrors.inte
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
+
 export class RegisterComponent implements OnInit {
   form: UntypedFormGroup;
   backendErrors$: Observable<BackendErrorsInterface | null>;
